@@ -1,0 +1,31 @@
+﻿<Window x:Class="AirportProject.ListBagage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view_model="clr-namespace:Airport.ViewModel"
+        Title="ListBagage"  Height="700" Width="700" Background="LightGray" ResizeMode="NoResize" >
+    <Window.Resources>
+        <ObjectDataProvider x:Key="vm_bagage"  ObjectType="{x:Type view_model:VMBagage}" />
+    </Window.Resources>
+    
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="650" Margin="10,0,0,0" VerticalAlignment="Top" Width="672">
+            <Label Content="Liste des bagages" HorizontalAlignment="Left" Margin="11,16,0,0" VerticalAlignment="Top" Width="507"/>
+            <DataGrid HorizontalAlignment="Left" Margin="10,45,0,0"  AutoGenerateColumns="False" 
+                     VerticalAlignment="Top" Width="652" Height="586" x:Name="all_bagage" 
+                      ItemsSource="{Binding ListAllBagage, Source={StaticResource vm_bagage}}"
+                      MouseDoubleClick="show_bagage_details">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id_bagage" Width="*" Binding="{Binding Id_bagage}" Visibility="Hidden" />
+                    <DataGridTextColumn Header="CodeIata" Width="*" Binding="{Binding CodeIata}" />
+                    <DataGridTextColumn Header="IdTache" Width="*" Binding="{Binding IdTache}" />
+                    <DataGridTextColumn Header="Compagnie" Width="*" Binding="{Binding Compagnie}" />
+                    <DataGridTextColumn Header="Ligne" Width="*" Binding="{Binding Ligne}" />
+                    <DataGridTextColumn Header="DateCreation" Width="*" Binding="{Binding DateCreation}" />
+                    <DataGridTextColumn Header="status_ejection_surete" Width="*" Binding="{Binding status_ejection_surete}" />
+                    <DataGridTextColumn Header="cle_global" Width="*" Binding="{Binding cle_global}" />
+                    <DataGridTextColumn Header="jour_exploitation" Width="*" Binding="{Binding jour_exploitation}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>

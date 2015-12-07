@@ -1,0 +1,51 @@
+﻿<Window x:Class="AirportProject.DepartureVol"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view_model="clr-namespace:Airport.ViewModel" ResizeMode="NoResize"
+        Title="Listes des vols du départ" Height="400.925" Width="788.164" Background="Gainsboro">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="vm_vol"  ObjectType="{x:Type view_model:VMVol}" />
+        <ObjectDataProvider x:Key="event"  ObjectType="{x:Type view_model:Event}" />
+    </Window.Resources>
+    
+    <Grid HorizontalAlignment="Left" Height="370" VerticalAlignment="Top" Width="778">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="149*"/>
+            <RowDefinition Height="221*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Attributs disponible" HorizontalAlignment="Left" Margin="20,0,0,0" 
+                  VerticalAlignment="Top" RenderTransformOrigin="-1.127,-4.565" Height="255" Width="180" Grid.RowSpan="2">
+            <ListBox  x:Name="critere_vol_list" ItemsSource="{Binding Vol_Fields, Source={StaticResource vm_vol}}"  
+                   SelectedValuePath="Key"
+                   DisplayMemberPath="Value" 
+                   HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="168"/>
+        </GroupBox>
+        <GroupBox Header="Attributs affiches" HorizontalAlignment="Left" Margin="338,0,0,0" 
+                  VerticalAlignment="Top" RenderTransformOrigin="-0.099,-1.522" Height="255" Width="430" Grid.RowSpan="2">
+            <DataGrid x:Name="fields_table" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="418" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="Attribut" Width="2*" IsReadOnly="False" Binding="{Binding Name}"/>
+                    <DataGridTextColumn  Header="Nom" Width="*" IsReadOnly="False" Binding="{Binding ID}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+        <Button  HorizontalAlignment="Left" Margin="222,73,0,50" Width="102" Click="ajouter" x:Name="ajouter_b">
+             <Button.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="5" BorderThickness="0.5" BorderBrush="Gray">
+                        <ContentPresenter Content="Ajouter >>" HorizontalAlignment="Center" VerticalAlignment="Center"/>              
+                    </Border>            
+              </ControlTemplate>           
+            </Button.Template>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="222,123,0,0" VerticalAlignment="Top" Width="102" Height="26" Click="retirer">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="5" BorderThickness="0.5" BorderBrush="Gray">
+                        <ContentPresenter Content=">> Retirer" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>

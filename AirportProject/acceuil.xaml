@@ -1,0 +1,32 @@
+﻿<Window x:Class="AirportProject.acceuil"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="acceuil" Height="400.925" Width="620.164" Background="LightGray" ResizeMode="NoResize">
+    <Grid HorizontalAlignment="Left" Height="372" VerticalAlignment="Top" Width="694">
+        <Menu HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="694" Margin="0,-1,0,0" IsMainMenu="True">
+            <MenuItem Header="_Application">
+                <MenuItem Header="quiter"  Click="exit_application"/>
+            </MenuItem>
+            <MenuItem Header="_Vol" >
+                <MenuItem Header="Vols de départ" Click="departure_vol_clic"/>
+                <Separator />
+                <MenuItem Header="Vols d'arrivée" Click="arrived_vol_clic"/>
+                <Separator />
+                <MenuItem Header="Chercher" Click="seach_vol_clic" />
+            </MenuItem>
+            <MenuItem Header="_Bagages" >
+                <MenuItem Header="Liste des bagages" Click="list_all_bagage_clic" />
+                <Separator />
+                <MenuItem Header="Rechercher bagage"  Click="search_bagage_clic" />
+            </MenuItem>
+            <MenuItem Header="_Planification">
+                <MenuItem Header="Ajouter creneau Horaire" />
+            </MenuItem>
+            <MenuItem Header="_Parametres logiciel" />
+            <MenuItem Header="_Parametres Administration" />
+            <MenuItem Header="_Aide" />
+        </Menu>
+        <Image HorizontalAlignment="Left" Height="342" Margin="0,30,0,0"
+               VerticalAlignment="Top" Width="694" Source="image/decollage-gros-porteur-paris.jpg"/>
+    </Grid>
+</Window>

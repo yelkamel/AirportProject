@@ -1,0 +1,72 @@
+﻿<Window x:Class="AirportProject.Bagage_details"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view_model="clr-namespace:Airport.ViewModel"
+        Title="Bagage_details" Height="700" Width="700" Background="LightGray" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="vm_bagage"  ObjectType="{x:Type view_model:VMBagage}" />
+    </Window.Resources>
+    <Grid>
+        <GroupBox Header="Détails&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="152" Width="674">
+            <Grid HorizontalAlignment="Left" Width="662" Margin="0,-14,0,-5">
+                <Label Content="Code IATA:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="84,14,0,0" TextWrapping="Wrap"  
+                         Text="" VerticalAlignment="Top" Width="120" x:Name="code_iata"/>
+                <Label Content="Compagnie: " HorizontalAlignment="Left" Margin="225,10,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="299,14,0,0" TextWrapping="Wrap"
+                         Text="" VerticalAlignment="Top" Width="120" x:Name="compagnie"/>
+                <Label Content="Doublon :" HorizontalAlignment="Left" Margin="546,11,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="606,13,0,0" TextWrapping="Wrap"
+                         Text="" VerticalAlignment="Top" Width="38" x:Name="doublon"/>
+                <Label Content="Recollé : " HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="80,50,0,0" TextWrapping="Wrap" 
+                         Text="" VerticalAlignment="Top" Width="43" x:Name="recollete"/>
+                <Label Content="Embarquable :" HorizontalAlignment="Left" Margin="129,48,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="215,50,0,0" TextWrapping="Wrap" 
+                         Text="" VerticalAlignment="Top" Width="43" x:Name="embarquable"/>
+                <Label Content="Re-routage :" HorizontalAlignment="Left" Margin="262,48,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="336,52,0,0" TextWrapping="Wrap"
+                         Text="" VerticalAlignment="Top" Width="47" x:Name="re_routage"/>
+                <Label Content="Particularités :" HorizontalAlignment="Left" Margin="400,52,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="489,55,0,0" TextWrapping="Wrap" Text="" 
+                         VerticalAlignment="Top" Width="120" x:Name="particularite"/>
+                <Label Content="Création : " HorizontalAlignment="Left" Margin="6,85,0,0" VerticalAlignment="Top"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="80,89,0,0" TextWrapping="Wrap"
+                         Text="" VerticalAlignment="Top" Width="120" x:Name="creation"/>
+            </Grid>
+        </GroupBox>
+        <Label Content="Type : " HorizontalAlignment="Left" Margin="445,31,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="490,32,0,0" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" Width="64" x:Name="type"/>
+        <GroupBox Header="Itineraire&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Height="111" Width="674"/>
+        <Grid HorizontalAlignment="Left" Height="102" Margin="16,176,0,0" VerticalAlignment="Top" Width="668">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="228*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="409*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Aéroport Continuation : " HorizontalAlignment="Left" Margin="12,9,0,0" VerticalAlignment="Top" Width="143" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="123.799,12,0,0" TextWrapping="Wrap" 
+        		Text="" VerticalAlignment="Top" Width="69" x:Name="aeroport_continuation" Grid.Column="2"/>
+            <Label Content="Ville Continuation : " HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="109" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="123.799,48,0,0" TextWrapping="Wrap" 
+            	Text="" VerticalAlignment="Top" Width="69" x:Name="ville_continuation" Grid.Column="2"/>
+        </Grid>
+        <Label Content="Aéroport Origine : " HorizontalAlignment="Left" Margin="27,188,0,0" VerticalAlignment="Top" Width="109"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="160,189,0,0" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" Width="81" x:Name="aeroport_origine"/>
+        <Label Content="Aéroport Destination: " HorizontalAlignment="Left" Margin="27,230,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="160,230,0,0" TextWrapping="Wrap" 
+        	Text="" VerticalAlignment="Top" Width="81" x:Name="aeroport_destination"/>
+        <Label Content="Continuation" HorizontalAlignment="Left" Margin="490,189,0,0" VerticalAlignment="Top" Width="109"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="577,191,0,0" TextWrapping="Wrap" 
+        	Text="" VerticalAlignment="Top" Width="45" x:Name="continuation"/>
+        <GroupBox Header="Traçabilité" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top" Height="177" Width="674">
+            <DataGrid HorizontalAlignment="Left" Height="155" VerticalAlignment="Top" Width="662" x:Name="tracabilite"/>
+        </GroupBox>
+        <GroupBox Header="Vols associés" HorizontalAlignment="Left" Margin="16,445,0,0" VerticalAlignment="Top" Width="668" Height="173">
+            <DataGrid HorizontalAlignment="Left" Width="656" Margin="2,1,-2,3" x:Name="vol_associe"/>
+        </GroupBox>
+
+    </Grid>
+</Window>

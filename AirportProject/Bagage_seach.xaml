@@ -1,0 +1,73 @@
+﻿<Window x:Class="AirportProject.Bagage_seach"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view_model="clr-namespace:Airport.ViewModel"
+        Title="Bagage_seach" Height="700" Width="700" Background="LightGray" ResizeMode="NoResize">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="vm_bagage"  ObjectType="{x:Type view_model:VMBagage}" />
+    </Window.Resources>
+
+    <Grid HorizontalAlignment="Left" Height="700" VerticalAlignment="Top" Width="700">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="219*"/>
+            <RowDefinition Height="481*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Filtre&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top"
+                  Width="670" RenderTransformOrigin="0.492,-1.023" Height="250" Grid.RowSpan="2">
+            <Grid HorizontalAlignment="Left" Width="660" Margin="0,-14,-2,28">
+                <Label Content="Code IATA : " HorizontalAlignment="Left" Margin="7,83,0,0" VerticalAlignment="Top" Width="91"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="128,85,0,0" TextWrapping="Wrap" Text=""
+                         VerticalAlignment="Top" Width="161" RenderTransformOrigin="-0.609,-2.147" x:Name="code_iata"/>
+                <Label Content="Type de tache : " HorizontalAlignment="Left" Margin="336,139,0,0" VerticalAlignment="Top" Width="104"/>
+                <ComboBox ItemsSource="{Binding ListTask, Source={StaticResource vm_bagage}}"
+                          DisplayMemberPath="idtask" 
+                          SelectedItem="{Binding Path=ListTask}" 
+                          SelectedValue="{Binding Path=ListTask.idtask}"
+                          SelectedValuePath=""
+                          HorizontalAlignment="Left" Margin="458,143,0,0" 
+                          VerticalAlignment="Top" Width="175" x:Name="type_task_list"/>
+                <Label Content="Statut Temporel : " HorizontalAlignment="Left" Margin="337,47,0,0" VerticalAlignment="Top" Width="109"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="459,49,0,0" TextWrapping="Wrap" 
+                         Text=""  x:Name="statu_temporel" VerticalAlignment="Top" Width="175"/>
+                <Label Content="Vol au départ : " HorizontalAlignment="Left" Margin="339,74,0,0" VerticalAlignment="Top" Width="109"/>
+                <ComboBox x:Name="vol_depart" ItemsSource="{Binding ListVol, Source={StaticResource vm_bagage}}"
+                          DisplayMemberPath="ligne" 
+                          SelectedItem="{Binding Path=ListVol}" 
+                          SelectedValue="{Binding Path=ListVol.id}"
+                          SelectedValuePath=""
+                         HorizontalAlignment="Left" Margin="458,75,0,0" VerticalAlignment="Top" Width="178" Height="25"/>
+                <Label Content="Ligne : " x:Name="Etat_ejection" 
+                       HorizontalAlignment="Left"
+                       Margin="9,110,0,0" VerticalAlignment="Top" Width="116"/>
+                <Label Content="Date Bagage : " HorizontalAlignment="Left" VerticalAlignment="Top"
+                       RenderTransformOrigin="1.211,1.269" Margin="8,57,0,0" Width="95"/>
+                <DatePicker HorizontalAlignment="Left" Margin="130,57,0,0" VerticalAlignment="Top" x:Name="date_departure" Width="158"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="129,112,0,0" TextWrapping="Wrap" 
+                	Text=""  x:Name="ligne_bag" VerticalAlignment="Top" Width="160" />
+                <Label Content="" HorizontalAlignment="Left" Margin="20,10,0,0"
+                       Foreground="#F31120" VerticalAlignment="Top" Width="614" x:Name="show_error"/>
+            </Grid>
+        </GroupBox>
+        <Label Content="Compagnie : " HorizontalAlignment="Left" Margin="24,159,0,0" VerticalAlignment="Top" Width="95"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="146,162,0,0" x:Name="compagnie_name" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" Width="157"/>
+        <Label Content="Sortie Tri Ejection: " HorizontalAlignment="Left" Margin="353,130,0,0" VerticalAlignment="Top" Width="110"/>
+        <ComboBox HorizontalAlignment="Left" ItemsSource="{Binding ListSortieTri, Source={StaticResource vm_bagage}}"
+                          DisplayMemberPath="nom_res" 
+                          SelectedItem="{Binding Path=ListSortieTri}" 
+                          SelectedValue="{Binding Path=ListSortieTri.idSortie}"
+                          SelectedValuePath=""
+                  x:Name="sortie_tri_ejection" Margin="473,128,0,0"
+                  VerticalAlignment="Top" Width="177" Height="25"/>
+        <Button x:Name="add_filter"  Content="Appliquer" HorizontalAlignment="Left" Margin="226,3,0,0"
+                VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.771,1.622" Click="add_filter_Click" Grid.Row="1"/>
+        <Button x:Name="delete_filter" Content="Effacer" HorizontalAlignment="Left" Margin="336,3,0,0" VerticalAlignment="Top" 
+                Width="75" RenderTransformOrigin="0.771,1.622" Grid.Row="1"/>
+        <GroupBox Header="Resultats" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="670" Height="426" Grid.Row="1">
+            <DataGrid HorizontalAlignment="Left" Height="380" VerticalAlignment="Top" Width="658" 
+                      x:Name="bagage_data_" ItemsSource="{Binding ListBagage}"
+                      MouseDoubleClick="show_bagage_details" />
+        </GroupBox>
+    </Grid>
+
+</Window>
